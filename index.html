@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#170f27">
+<title>Une petite surprise pour Reyes ❤️</title>
+<style>
+:root{--pink:#ff8fb3;--cream:#fff3f6;--violet:#241638}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;font-family:Georgia,serif;color:var(--cream);background:radial-gradient(circle at 15% 15%,#593052 0,transparent 32%),radial-gradient(circle at 85% 80%,#3c285f 0,transparent 35%),linear-gradient(145deg,#100c1c,#24132d 60%,#160f27);overflow-x:hidden}
+main{width:min(680px,92%);margin:0 auto;padding:34px 0 60px}
+.top{text-align:center;padding:24px 8px 16px}
+.tag{font:600 11px Arial,sans-serif;letter-spacing:3px;text-transform:uppercase;color:#ffc2d5}
+h1{font-size:clamp(34px,9vw,58px);line-height:1.05;margin:14px 0;color:#fff}
+h1 span{color:var(--pink)}
+.intro{font:15px/1.7 Arial,sans-serif;color:#e8dce9;max-width:480px;margin:0 auto}
+.card{background:#ffffff0d;border:1px solid #ffffff24;border-radius:24px;padding:23px;margin:18px 0;box-shadow:0 18px 50px #0003;backdrop-filter:blur(8px)}
+h2{font-size:23px;margin:0 0 12px;color:#ffc1d4}
+p{line-height:1.75}
+button{border:0;border-radius:999px;padding:13px 19px;font-weight:700;font-size:14px;cursor:pointer;background:linear-gradient(120deg,#ff9cbd,#ffd1df);color:#35182a;margin:6px 4px;box-shadow:0 6px 18px #0002}
+button.secondary{background:#ffffff14;color:#fff;border:1px solid #ffffff30;box-shadow:none}
+button:active{transform:scale(.97)}
+.center{text-align:center}
+#reveal,#answer,#letter{display:none;margin-top:16px;padding:16px;border-radius:16px;background:#ffb5ce14;border:1px solid #ffb5ce38;line-height:1.8}
+.options{display:flex;flex-wrap:wrap;justify-content:center}
+.small{font:12px Arial,sans-serif;color:#cbbccc}
+.heart{font-size:35px;animation:pulse 1.6s infinite;display:inline-block}
+@keyframes pulse{50%{transform:scale(1.18)}}
+.spark{position:fixed;pointer-events:none;opacity:.5;animation:float 9s linear infinite}
+@keyframes float{from{transform:translateY(105vh) rotate(0)}to{transform:translateY(-15vh) rotate(360deg)}}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg);opacity:.15}}
+footer{text-align:center;color:#b9a9bc;font:12px Arial,sans-serif;margin-top:28px}
+</style>
+</head>
+<body>
+<span class="spark" style="left:8%;font-size:18px;animation-delay:-2s">✦</span>
+<span class="spark" style="left:83%;font-size:22px;animation-delay:-6s">♡</span>
+<span class="spark" style="left:48%;font-size:14px;animation-delay:-4s">✧</span>
+<main>
+  <header class="top">
+    <div class="tag">Une petite parenthèse rien que pour toi</div>
+    <div class="heart">♡</div>
+    <h1>Germela <span>Reyes</span></h1>
+    <p class="intro">J'aurais pu t'envoyer un simple « salut, ça va ? »… mais aujourd'hui, j'ai préféré préparer quelque chose d'un peu différent.</p>
+  </header>
+
+  <section class="card center">
+    <h2>Avant toute chose…</h2>
+    <p>Madame la future femme d'affaires, j'espère que tu es prête. Cette page contient une mission importante : sourire au moins une fois. 😌</p>
+    <button onclick="document.getElementById('mission').scrollIntoView({behavior:'smooth'})">J'accepte la mission ✨</button>
+  </section>
+
+  <section class="card" id="mission">
+    <h2>01 — Petit test : te connais-je un peu ?</h2>
+    <p>Quand Reyes s'ennuie, à quoi pense-t-elle parfois ?</p>
+    <div class="options">
+      <button class="secondary" onclick="quiz(false)">Aux devoirs de physique 📚</button>
+      <button class="secondary" onclick="quiz(true)">À l'univers 🌌</button>
+      <button class="secondary" onclick="quiz(false)">À manger du popcorn 🍿</button>
+    </div>
+    <div id="answer"></div>
+  </section>
+
+  <section class="card">
+    <h2>02 — Une qualité à ne jamais oublier</h2>
+    <p>Tu m'as parlé de ton envie de devenir une femme d'affaires. Alors retiens ceci : ne laisse personne te faire croire que tes rêves sont trop grands.</p>
+    <p>Continue d'apprendre, d'avancer et de croire en tes capacités. J'espère sincèrement te voir réaliser de belles choses. Et le jour où tu seras une grande patronne, je réclamerai juste le droit de dire : « Je savais qu'elle en était capable. » 😄</p>
+    <div class="center"><button onclick="showCompliment()">J'ai droit à un compliment ?</button></div>
+    <div id="reveal">Ton ambition, ton humour et cette façon bien à toi de rendre une conversation moins ordinaire… ce sont des choses qui te rendent attachante. Ne les perds pas. 🌷</div>
+  </section>
+
+  <section class="card">
+    <h2>03 — Une question très sérieuse</h2>
+    <p>Si tu pouvais te téléporter maintenant, tu choisirais…</p>
+    <div class="options">
+      <button class="secondary" onclick="choice('Une plage calme, avec une belle vue 🌅')">Une plage 🌅</button>
+      <button class="secondary" onclick="choice('Un endroit où il y a du popcorn à volonté. Je connais tes priorités 😂')">Un cinéma avec popcorn 🍿</button>
+      <button class="secondary" onclick="choice('Un endroit où l’on peut observer les étoiles et parler de l’univers 🌌')">Sous les étoiles 🌌</button>
+    </div>
+    <div id="choice" class="small center" style="margin-top:12px"></div>
+  </section>
+
+  <section class="card center">
+    <h2>04 — Quelques mots pour toi</h2>
+    <p>Je ne vais pas faire un discours de cent pages. Je voulais simplement te rappeler que tu es une personne que j'apprécie découvrir, avec tes idées, tes blagues, ton caractère et tes ambitions.</p>
+    <p>Je ne prétends pas tout savoir de toi, mais j'aimerais continuer à apprendre à te connaître, sans précipitation et sans jouer un rôle.</p>
+    <button onclick="openLetter()">Lire le petit mot final 💌</button>
+    <div id="letter">
+      <strong>Chère Germela,</strong><br><br>
+      Il y a des personnes avec qui une conversation commence simplement et finit par laisser un petit sourire. Tu as ce petit quelque chose : un mélange d'humour, de caractère et de rêves.<br><br>
+      Alors garde ton sourire, protège tes ambitions et continue de croire en ce que tu peux devenir. Que Dieu accompagne tes projets et t'accorde de belles réussites.<br><br>
+      Et maintenant… j'ai une dernière question, très importante. 💗<br><br>
+      <strong>Veux-tu être ma princesse adorée pour toujours ?</strong>
+      <div class="options" style="margin-top:16px">
+        <button onclick="sayYes()">Oui, je le veux ! 💖</button>
+        <button class="secondary" onclick="sayNo()">Non 🙈</button>
+      </div>
+      <div id="nope" class="small" style="margin-top:12px"></div>
+      <div id="celebration" style="display:none;margin-top:18px">
+        <div style="font-size:38px">👑🌹🎉</div>
+        <h2>Félicitations, Princesse Reyes !</h2>
+        <p>Tu es désormais officiellement la princesse de ce petit royaume. 👸❤️<br>
+        Et Exaucé devient ton roi. Ensemble, que votre royaume soit rempli de respect, de rires, de douceur, de confiance et de beaux souvenirs.</p>
+        <p><strong>Longue vie à la princesse Germela et au roi Exaucé !</strong> 👑</p>
+        <a id="whatsappLink" href="#" target="_blank" rel="noopener" style="display:inline-block;text-decoration:none;border-radius:999px;padding:13px 20px;background:#25D366;color:#073b20;font:700 14px Arial,sans-serif;margin-top:8px">💬 Envoyer ma réponse par WhatsApp</a>
+        <p class="small">Le bouton ouvre WhatsApp avec ton message déjà préparé. Il te suffira d'appuyer sur « Envoyer ».</p>
+      </div>
+    </div>
+  </section>
+  <footer>Créé avec une petite dose d'attention, un soupçon d'humour et beaucoup de douceur. ♡</footer>
+  <div id="petals" aria-hidden="true"></div>
+</main>
+<script>
+function quiz(ok){
+ const el=document.getElementById('answer');el.style.display='block';
+ el.textContent=ok?'Bonne réponse ! 🌌 Je n’ai pas oublié cette histoire. Mais attention, je n’ai pas encore percé tous tes mystères. 😄':'Pas cette fois ! 😂 Indice : tu m’as déjà parlé de l’univers.';
+}
+function showCompliment(){document.getElementById('reveal').style.display='block'}
+function choice(msg){document.getElementById('choice').textContent=msg}
+function openLetter(){document.getElementById('letter').style.display='block'}
+function sayNo(){
+ document.getElementById('nope').textContent='Oups… cette option n’est pas disponible 😇. Il ne reste que le OUI ! 💗';
+}
+function sayYes(){
+ document.getElementById('nope').textContent='';
+ document.getElementById('celebration').style.display='block';
+ const message='👑🎉 J’accepte ! Je suis désormais la princesse de ce petit royaume. Longue vie à la princesse Germela et au roi Exaucé ! ❤️🌹';
+ const url='https://wa.me/242067279904?text='+encodeURIComponent(message);
+ document.getElementById('whatsappLink').href=url;
+ showerPetals();
+ document.getElementById('celebration').scrollIntoView({behavior:'smooth',block:'center'});
+}
+function showerPetals(){
+ const layer=document.getElementById('petals');
+ const symbols=['🌹','🌸','🌺','💗','🌷'];
+ for(let i=0;i<42;i++){
+   const petal=document.createElement('span');
+   petal.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+   petal.style.cssText='position:fixed;z-index:99;top:-40px;left:'+Math.random()*100+'vw;font-size:'+(18+Math.random()*20)+'px;pointer-events:none;animation:fall '+(3+Math.random()*4)+'s linear forwards;animation-delay:'+(Math.random()*1.5)+'s';
+   layer.appendChild(petal);
+   setTimeout(()=>petal.remove(),8500);
+ }
+}
+</script>
+</body>
+</html>
